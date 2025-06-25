@@ -1,7 +1,7 @@
-package com.example.ServiceNow.Backend.repo;
+package com.Package.ServiceHub.Backend.repo;
 
-import com.example.ServiceNow.Backend.model.Customer;
-import com.example.ServiceNow.Backend.model.User;
+import com.Package.ServiceHub.Backend.model.Customer;
+import com.Package.ServiceHub.Backend.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

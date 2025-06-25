@@ -1,4 +1,4 @@
-package com.example.ServiceNow.Backend.model;
+package com.Package.ServiceHub.Backend.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Customer {
+public class ServiceProvider {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,11 +23,19 @@ public class Customer {
     private String state;
     private String pincode;
 
+    private String verificationFilePath;
+
+    @ElementCollection
+    private List<String> services;
+
+    @ElementCollection
+    private List<String> preferences;
+
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    // Custom getter for email from associated User
+    // Convenience Getters
     public String getEmail() {
         return user != null ? user.getEmail() : null;
     }
@@ -44,6 +52,7 @@ public class Customer {
         return user != null ? user.getRole() : null;
     }
 
+    // Convenience Setters
     public void setEmail(String email) {
         if (user != null) user.setEmail(email);
     }

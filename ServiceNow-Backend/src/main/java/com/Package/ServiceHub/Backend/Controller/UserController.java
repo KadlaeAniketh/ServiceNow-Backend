@@ -1,7 +1,12 @@
-package com.example.ServiceNow.Backend;
+package com.Package.ServiceHub.Backend.Controller;
 
-import com.example.ServiceNow.Backend.model.*;
-import com.example.ServiceNow.Backend.repo.*;
+import com.Package.ServiceHub.Backend.dto.UserProfileDTO;
+import com.Package.ServiceHub.Backend.model.*;
+import com.Package.ServiceHub.Backend.repo.CustomerRepository;
+import com.Package.ServiceHub.Backend.repo.ServiceProviderRepository;
+import com.Package.ServiceHub.Backend.repo.UserRepository;
+import com.Package.ServiceHub.Backend.model.*;
+import com.Package.ServiceHub.Backend.repo.*;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,8 +36,6 @@ public class UserController {
         user.setEmail(request.getEmail());
         user.setFirstName(request.getFirstName());
         user.setLastName(request.getLastName());
-
-        // You can hash password here if needed
         user.setPassword(request.getPassword());
 
         userRepository.save(user);
@@ -96,5 +99,23 @@ public class UserController {
         }
 
         return ResponseEntity.badRequest().body("Invalid role");
+    }
+
+    // ✅ NEW: Get user profile without lazy loading issue
+    @GetMapping("/profile/{email}")
+    public ResponseEntity<?> getUserProfile(@PathVariable String email) {
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            return ResponseEntity.badRequest().body("User not found");
+        }
+
+        UserProfileDTO profileDTO = new UserProfileDTO(
+                user.getEmail(),
+                user.getFirstName(),
+                user.getLastName(),
+                user.getRole()
+        );
+
+        return ResponseEntity.ok(profileDTO);
     }
 }

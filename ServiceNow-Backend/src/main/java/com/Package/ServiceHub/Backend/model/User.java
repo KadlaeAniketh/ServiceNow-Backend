@@ -1,4 +1,4 @@
-package com.example.ServiceNow.Backend.model;
+package com.Package.ServiceHub.Backend.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -21,7 +21,6 @@ public class User {
 
     private String firstName;
     private String lastName;
-
     private String role; // "customer" or "provider"
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)

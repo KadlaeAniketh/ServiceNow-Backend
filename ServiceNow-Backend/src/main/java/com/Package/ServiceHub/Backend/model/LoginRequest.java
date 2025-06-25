@@ -1,8 +1,9 @@
-package com.example.ServiceNow.Backend.model;
+package com.Package.ServiceHub.Backend.model;
 
 public class LoginRequest {
     private String email;
     private String password;
+    private String role;
 
     // Getters and setters
     public String getEmail() { return email; }
@@ -10,4 +11,7 @@ public class LoginRequest {
 
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
+
+    public String getRole() { return role; }
+    public void setRole(String role) { this.role = role; }
 }

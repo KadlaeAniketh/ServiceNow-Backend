@@ -1,4 +1,4 @@
-package com.example.ServiceNow.Backend.model;
+package com.Package.ServiceHub.Backend.model;
 
 public class RoleRequest {
     private String email;

@@ -1,9 +1,9 @@
-package com.example.ServiceNow.Backend.service;
+package com.Package.ServiceHub.Backend.service;
 
-import com.example.ServiceNow.Backend.model.ServiceProvider;
-import com.example.ServiceNow.Backend.model.User;
-import com.example.ServiceNow.Backend.repo.ServiceProviderRepository;
-import com.example.ServiceNow.Backend.repo.UserRepository;
+import com.Package.ServiceHub.Backend.model.ServiceProvider;
+import com.Package.ServiceHub.Backend.model.User;
+import com.Package.ServiceHub.Backend.repo.ServiceProviderRepository;
+import com.Package.ServiceHub.Backend.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -67,12 +67,6 @@ public class ServiceProviderService {
         provider.setDistrict(profileData.getDistrict());
         provider.setState(profileData.getState());
         provider.setPincode(profileData.getPincode());
-
-        if ("provider".equalsIgnoreCase(user.getRole())) {
-            provider.setServices(profileData.getServices());
-        } else if ("customer".equalsIgnoreCase(user.getRole())) {
-            provider.setPreferences(profileData.getPreferences());
-        }
 
         providerRepo.save(provider);
         return "Profile completed successfully";

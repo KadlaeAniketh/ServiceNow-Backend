@@ -1,4 +1,4 @@
-package com.example.ServiceNow.Backend.config;
+package com.Package.ServiceHub.Backend.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +14,7 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:5176") // React app
+                        .allowedOrigins("http://localhost:5173") // React app
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true); // Only needed if using cookies/session

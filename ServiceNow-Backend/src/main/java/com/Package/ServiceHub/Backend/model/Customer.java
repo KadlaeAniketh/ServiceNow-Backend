@@ -1,15 +1,13 @@
-package com.example.ServiceNow.Backend.model;
+package com.Package.ServiceHub.Backend.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ServiceProvider {
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,19 +21,11 @@ public class ServiceProvider {
     private String state;
     private String pincode;
 
-    private String verificationFilePath; // Optional file field
-
-    @ElementCollection
-    private List<String> services;
-
-    @ElementCollection
-    private List<String> preferences; // Optional if provider can have preferences
-
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    // Convenience Getters/Setters delegated to User
+    // Convenience Getters from User
     public String getEmail() {
         return user != null ? user.getEmail() : null;
     }
@@ -52,6 +42,7 @@ public class ServiceProvider {
         return user != null ? user.getRole() : null;
     }
 
+    // Setters that propagate to User
     public void setEmail(String email) {
         if (user != null) user.setEmail(email);
     }
@@ -72,4 +63,15 @@ public class ServiceProvider {
         if (user != null) user.setPassword(password);
     }
 
+    public String getAddress() {
+        return String.format(
+                "%s, %s, %s, %s, %s, %s",
+                street != null ? street : "",
+                village != null ? village : "",
+                mandal != null ? mandal : "",
+                district != null ? district : "",
+                state != null ? state : "",
+                pincode != null ? pincode : ""
+        ).replaceAll(",\\s*,", ",").trim();
     }
+}

@@ -1,4 +1,4 @@
-package com.example.ServiceNow.Backend;
+package com.Package.ServiceHub.Backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

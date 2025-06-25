@@ -1,7 +1,7 @@
-package com.example.ServiceNow.Backend.service;
+package com.Package.ServiceHub.Backend.service;
 
-import com.example.ServiceNow.Backend.model.User;
-import com.example.ServiceNow.Backend.repo.UserRepository;
+import com.Package.ServiceHub.Backend.model.User;
+import com.Package.ServiceHub.Backend.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
